@@ -43,6 +43,10 @@ body {
   line-height: 1.6;
 }
 
+section {
+  padding: 5em 2em;
+}
+
 strong { font-weight: var(--fw-bold) }
 
 h1,
@@ -72,7 +76,31 @@ h3 { font-size: var(--fs-h3) }
 .section_subtitle-about {
   background: var(--clr-accent);
   font-family: var(--ff-secondary);
+  margin-bottom: 1em;
 }
+
+/* Header */
+
+nav{display: none;}
+
+/* about me */
+
+.about {
+  max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about_img {
+  max-width: 200px;
+  float:right;
+}  
+
+
+
+
+
+
+
 
 
 
