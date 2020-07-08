@@ -95,7 +95,34 @@ nav{display: none;}
   float:right;
 }  
 
+/*  Organisation section  */
 
+.org {
+  background-color: var(--clr-dark);
+  text-align: center;
+  color: var(--clr-light);
+  
+}
+
+.section_title-org {
+  color: var(--clr-accent);
+  position: relative;
+  margin-bottom: 1em;
+}
+
+th {
+  width: 33%;
+  font-family: var(--ff-primary);
+  color: var(--clr-light);
+  padding-left: 20px;
+}
+
+td {
+  text-align: center;
+  color: var(--clr-light);
+  font-family: var(--ff-primary);
+  padding-left: 20px;
+}
 
 
 
