@@ -1,9 +1,18 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+* {box-sizing: border-box}
+
+.container {
+  width: 70%;
+  background-color: #ddd;
 }
 
-#greeting-container {
-  margin-top: 20px;
+.container .skills {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
 }
+
+.creative {width: 90%; background-color: #4CAF50;}
+.code {width: 70%; background-color: #2196F3;}
+.teach {width: 80%; background-color: #f44336;}
+.eatSleep {width: 98%; background-color: #808080;}
