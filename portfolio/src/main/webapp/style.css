@@ -124,6 +124,8 @@ td {
   padding-left: 20px;
 }
 
+/* Skills */
+
 .container {
   width: 70%;
   background-color: var(--clr-dark);
@@ -146,6 +148,8 @@ td {
 .teach {width: 80%; background-color: var(--clr-accent);}
 .eatSleep {width: 98%; background-color: var(--clr-accent);}
 
+/* Random facts */
+
 .facts {
   background-color: var(--clr-dark);
   color: var(--clr-light);
@@ -157,4 +161,34 @@ td {
 }
 .facts_img {
   float: right;
+}
+
+.section_subtitle-gallery {
+    background-color: var(--clr-accent);
+    margin: 1em 0;
+}
+
+
+
+/* footer */
+
+footer {
+  background-color: #111;
+  color: var(--clr-accent);
+  text-align: center;
+  padding: 2.5em 0;
+  font-size: var(--fs-h3);
+}
+
+footer a { color: inherit }
+
+.social-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 1em 0 0;
+}
+
+.social-list__item {
+  margin: 0 .5em;
 }
