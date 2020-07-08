@@ -124,26 +124,25 @@ td {
   padding-left: 20px;
 }
 
-
-
-
-
-
-
-
 .container {
   width: 70%;
-  background-color: #ddd;
+  background-color: var(--clr-dark);
+}
+
+.skills_body {
+  font-family: var(--ff-primary);
 }
 
 .container .skills {
   text-align: right;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: var(--clr-dark);
+  font-weight: bold;
 }
 
-.creative {width: 90%; background-color: #4CAF50;}
-.code {width: 70%; background-color: #2196F3;}
-.teach {width: 80%; background-color: #f44336;}
-.eatSleep {width: 98%; background-color: #808080;}
+.creative {width: 90%; background-color: var(--clr-accent);}
+.code {width: 70%; background-color: var(--clr-accent);}
+.teach {width: 80%; background-color: var(--clr-accent);}
+.eatSleep {width: 98%; background-color: var(--clr-accent);}
+
