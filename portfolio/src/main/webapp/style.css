@@ -146,3 +146,15 @@ td {
 .teach {width: 80%; background-color: var(--clr-accent);}
 .eatSleep {width: 98%; background-color: var(--clr-accent);}
 
+.facts {
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+}
+
+.section_title-facts {
+  color: var(--clr-accent);
+  background-color: var(--clr-light);
+}
+.facts_img {
+  float: right;
+}
