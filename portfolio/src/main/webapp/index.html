@@ -2,17 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aastha Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+        <header>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav_list">
+                    <li class="nav_item"><a href="#about" class="nav_link">About Me</a></li>
+                    <li class="nav_item"><a href="#org" class="nav_link">Organisation</a></li>
+                    <li class="nav_item"><a href="#skills" class="nav_link">Skills</a></li>
+                    <li class="nav_item"><a href="#facts" class="nav_link">Random Facts</a></li>
+                    <li class="nav_item"><a href="#gallery" class="nav_link">Gallery</a></li>
+                </ul>
+            </nav>
+        </header>
   </body>
 </html>
