@@ -2,17 +2,144 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aastha Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
+        <header>
+            <nav class="nav">
+                <ul class="nav_list">
+                    <li class="nav_item"><a href="#about" class="nav_link">About Me</a></li>
+                    <li class="nav_item"><a href="#org" class="nav_link">Organisation</a></li>
+                    <li class="nav_item"><a href="#skills" class="nav_link">Skills</a></li>
+                    <li class="nav_item"><a href="#facts" class="nav_link">Random Facts</a></li>
+                    <li class="nav_item"><a href="#gallery" class="nav_link">Gallery</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- About Me -->
+        <section class="about-me" id="about">
+            <img src="/img/aastha01.jpg" alt="Aastha smiling" class="about_img">
+            <h2 class="section_title section_title-about">Hi,I am <strong>Aastha</strong></h2>
+            <p class="section_subtitle section_subtitle-about">Undergraduate student at Nirma University, Ahmedabad.</p>
+            
+            <div class="about-me_body">
+                <p>I enjoy turning complex problems into simple, beautiful and intuitive codes. When I'm not coding or solving puzzles, you'll find me creating art stuff, doing social work or sleeping :)</p>
+            </div>          
+            
+         </section>
+
+         <!-- Organisation-->
+         <section class="org" id="org">
+            <h2 class="section_title section_title-org">Organisation</h2>
+            <div class="org">
+                <table width="100%">
+                    <tr>
+                        <th><h3>CodeAdda</h3></th>
+                        <th><h3>Prarambh</h3></th>
+                        <th><h3>NSS</h3></th>
+                    </tr>
+                    <tr>
+                        <td>Club Director</td>
+                        <td>Content writer</td>
+                        <td>Teaching Volunteer</td>
+                    </tr>
+                    <tr>
+                        <td>(09/19 - present)</td>
+                        <td>(05/20 - present)</td>
+                        <td>(07/18 - present)</td>
+                    </tr>
+                    <tr>
+                        <td><br>Programming club</td>
+                        <td><br>ITNU alumni engagement</td>
+                        <td><br>National Service Scheme</td>
+                    </tr>
+                    <tr>
+                        <td>Organise sessions on DSA</td>
+                        <td>Share experience and learnings</td>
+                        <td>Teach students</td>
+                    </tr>
+                    <tr>
+                        <td>Contests on competitive platforms</td>
+                        <td>Mentor students</td>
+                        <td>Create social awareness</td>
+                    </tr>
+                    <tr>
+                        <td>Spread coding culture</td>
+                        <td>Guide for college-to-carrier</td>
+                        <td>Co-curricular activity</td>
+                    </tr>
+                </table>               
+
+         </section>
+
+         <!-- Skills -->
+         <section class="skills" id="skills">
+            <h2 class="section_title section_title-skills">My Skills</h2>
+            <div class="skills_body">
+                <p>Creativity</p>
+                <div class="container">
+                <div class="skills creative">90%</div>
+                </div>
+
+                <p>Coding</p>
+                <div class="container">
+                <div class="skills code">70%</div>
+                </div>
+
+                <p>Teaching/Learning</p>
+                <div class="container">
+                <div class="skills teach">80%</div>
+                </div>
+
+                <p>EverCurious</p>
+                <div class="container">
+                <div class="skills eatSleep">98%</div>
+                </div>
+            </div>
+         </section>
+
+         <!-- Random Facts -->
+         <section class="facts" id="facts">
+             <img src="img/skills01.jpg" alt="Smiley" class="facts_img">
+            <h2 class="section_title section_title-facts">Random Facts About Me</h2>
+            <div class="facts_body">
+                <ul style="list-style: none;">
+                    <li>I am foodie</li>
+                    <li>I love to travel</li>                    
+                    <li>I am a beach baby</li>
+                    <li>I am curious to know new people</li>
+                    <li>I have interest in psychology and philosophy</li>
+                    <li>I'm addicted to <a href="https://in.pinterest.com/aastha05042000/boards/" target="_blank" style="color: inherit;">Pinterest</a></li>
+                </ul>
+            </div>
+            
+         </section>
+
+        <!-- Gallery-->
+         <section class="gallery" id="gallery">
+            <h2 class="section_title">Gallery</h2>
+            <p class="section_subtitle section_subtitle-gallery">A glimpse of my Creativity</p>
+            <div class="gallery_body">             
+                <img src="img/img1.jpeg" alt="" height="300" width="300">
+                <img src="img/img1_4.jpeg" alt="" height="300" width="300">
+                <img src="img/img2_1.jpeg" alt="" height="300" width="300">
+                <img src="img/img2_2.jpeg" alt="" height="300" width="300">
+            </div>
+         </section>
+
+        <!-- Footer -->
+        <footer>
+            <ul class="social-list">
+                <li class="social-list__item"><a class="social-list__link" href="mailto:aastha05042000@gmail.com"><i class="fa fa-envelope" ></i></a></li>
+                <li class="social-list__item"><a class="social-list__link" href="https://www.linkedin.cn/in/aastha-anantkumar-26515a171/"><i class="fa fa-linkedin" ></i></a></li>
+                <li class="social-list__item"><a class="social-list__link" href="https://github.com/EverCurious5"><i class="fa fa-github"></i></a></li>
+                <li class="social-list__item"><a class="social-list__link" href="https://in.pinterest.com/aastha05042000/boards/"><i class="fa fa-pinterest"></i></a></li>
+            </ul>
+        </footer>
   </body>
 </html>
