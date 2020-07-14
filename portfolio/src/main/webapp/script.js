@@ -30,7 +30,7 @@
 /**
  * Fetches data from the server and adds it to the DOM.
  */
-function getData() {
+/*function getData() {
   console.log('Fetching data');
 
   // The fetch() function returns a Promise because the request is asynchronous.
@@ -43,7 +43,7 @@ function getData() {
 /**
  * Handles response by converting it to text and passing the result to
  * addDataToDom().
- */
+ 
 function handleResponse(response) {
   console.log('Handling the response.');
 
@@ -54,13 +54,18 @@ function handleResponse(response) {
   // When the response is converted to text, pass the result into the
   // addDataToDom() function.
   textPromise.then(addDataToDom);
-}
+}*/
 
-/** Adds Data to the DOM. */
+/** Adds Data to the DOM. 
 function addDataToDom(Data) {
   console.log('Adding Data to dom: ' + Data);
 
   const DataContainer = document.getElementById('Data-container');
   DataContainer.innerText = Data;
-}
+}*/
 
+function getData(){
+    fetch('/data').then(response => response.text()).then((data) => {
+        document.getElementById('msg').innerText = data;
+    });
+}
