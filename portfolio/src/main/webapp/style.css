@@ -168,6 +168,11 @@ td {
     margin: 1em 0;
 }
 
+/* comments */
+
+.comments{
+    background-color: var(--clr-accent);
+}
 
 
 /* footer */
