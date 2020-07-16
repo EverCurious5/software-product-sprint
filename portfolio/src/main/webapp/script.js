@@ -65,7 +65,22 @@ function addDataToDom(Data) {
 }*/
 
 function getData(){
-    fetch('/data').then(response => response.text()).then((data) => {
-        document.getElementById('msg').innerText = data;
+    fetch('/data').then(response => response.json()).then((data) => {
+       // document.getElementById('msg').innerText = data;
+       // console.log(data[0]);
+
+       const ob=document.getElementById('msg');
+       ob.innerHTML='';
+
+        for (var i = 0; i < data.length; i++) {
+            ob.appendChild(createListElement(data[i]));
+        }
     });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
