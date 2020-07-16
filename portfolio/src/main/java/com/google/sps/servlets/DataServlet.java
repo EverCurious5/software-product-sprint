@@ -29,5 +29,8 @@ public class DataServlet extends HttpServlet {
     String msg="Hello Aastha!";
     response.setContentType("text/html;");
     response.getWriter().println(msg);
+
+    
+
   }
 }
