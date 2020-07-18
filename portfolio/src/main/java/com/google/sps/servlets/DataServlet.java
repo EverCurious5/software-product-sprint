@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -25,14 +28,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+    private ArrayList<String> ar=new ArrayList<String>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     //String msg="Hello Aastha!";
-    ArrayList<String> ar=new ArrayList<String>();
-    ar.add("Nice work");
+    
+    /*ar.add("Nice work");
     ar.add("Welldone");
-    ar.add("Bravo young lady");
+    ar.add("Bravo young lady");*/
 
     String json = convertToJsonUsingGson(ar);
 
@@ -45,6 +50,41 @@ public class DataServlet extends HttpServlet {
     Gson gson = new Gson();
     String json = gson.toJson(ar);
     return json;
+  }
+
+    @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "text-input", "");
+    //ar.add(text);
+
+    // Respond with the result.
+    response.setContentType("text/html;");
+    response.getWriter().println(text);
+
+    long timestamp = System.currentTimeMillis();
+
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("title", text);
+    taskEntity.setProperty("timestamp", timestamp);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+  
+  /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String comment, String defaultValue) {
+    String value = request.getParameter(comment);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 
 }
