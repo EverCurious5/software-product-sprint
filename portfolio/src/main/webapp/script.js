@@ -64,23 +64,51 @@ function addDataToDom(Data) {
   DataContainer.innerText = Data;
 }*/
 
-function getData(){
+/*function getData(){
     fetch('/data').then(response => response.json()).then((data) => {
        // document.getElementById('msg').innerText = data;
        // console.log(data[0]);
 
-       const ob=document.getElementById('msg');
-       ob.innerHTML='';
-
+        const ob=document.getElementById('msg');
+        ob.innerHTML='';
         for (var i = 0; i < data.length; i++) {
             ob.appendChild(createListElement(data[i]));
-        }
+        }     
+
+        
     });
 }
 
-/** Creates an <li> element containing text. */
+/** Creates an <li> element containing text.
 function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
   return liElement;
+} */
+
+
+/** Fetches tasks from the server and adds them to the DOM. */
+function getData() {
+  fetch('/data').then(response => response.json()).then((tasks) => {
+    const taskListElement = document.getElementById('msg');
+    tasks.forEach((task) => {
+      taskListElement.appendChild(createTaskElement(task));
+    })
+  });
 }
+
+/** Creates an element that represents a task, including its delete button. */
+function createTaskElement(task) {
+  const taskElement = document.createElement('li');
+  taskElement.className = 'task';
+
+  const titleElement = document.createElement('span');
+  titleElement.innerText = task.title;
+
+  taskElement.appendChild(titleElement);
+
+  return taskElement;
+}
+
+
+

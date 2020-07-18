@@ -13,10 +13,15 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
+
 import com.google.gson.Gson;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.sps.data.Task;
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -39,11 +44,38 @@ public class DataServlet extends HttpServlet {
     ar.add("Welldone");
     ar.add("Bravo young lady");*/
 
-    String json = convertToJsonUsingGson(ar);
+
+    Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    List<Task> tasks = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String title = (String) entity.getProperty("title");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      Task task = new Task(id, title, timestamp);
+      tasks.add(task);
+    }
+
+    Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(gson.toJson(tasks));
 
+
+
+
+    
+    /*String json = convertToJsonUsingGson(ar);
+
+    response.setContentType("application/json;");
+
+    response.getWriter().println(json);*/
+
+    
   }
 
     private String convertToJsonUsingGson(ArrayList<String> ar) {
@@ -55,17 +87,17 @@ public class DataServlet extends HttpServlet {
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
-    String text = getParameter(request, "text-input", "");
+    String title = getParameter(request,"text-input","");
     //ar.add(text);
 
     // Respond with the result.
-    response.setContentType("text/html;");
-    response.getWriter().println(text);
+   // response.setContentType("text/html;");
+   // response.getWriter().println(text);
 
     long timestamp = System.currentTimeMillis();
 
     Entity taskEntity = new Entity("Task");
-    taskEntity.setProperty("title", text);
+    taskEntity.setProperty("title", title);
     taskEntity.setProperty("timestamp", timestamp);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
