@@ -15,6 +15,8 @@
 package com.google.sps.servlets;
 
 import com.google.gson.Gson;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -24,6 +26,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.sps.data.Task;
 import java.util.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,8 +58,9 @@ public class DataServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String title = (String) entity.getProperty("title");
       long timestamp = (long) entity.getProperty("timestamp");
-
-      Task task = new Task(id, title, timestamp);
+      String email = (String) entity.getProperty("email");
+    
+      Task task = new Task(id, title, timestamp,email);
       tasks.add(task);
     }
 
@@ -86,8 +90,23 @@ public class DataServlet extends HttpServlet {
 
     @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    
+    response.setContentType("text/html;");
+    PrintWriter out = response.getWriter();
+    UserService userService = UserServiceFactory.getUserService();
+    String email = "";        
+
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/");
+      return;
+    }
+    if (userService.isUserLoggedIn()){
+            email = userService.getCurrentUser().getEmail();
+    }
+      
+        
     // Get the input from the form.
-    String title = getParameter(request,"text-input","");
+    String title = getParameter(request,"new-comment","");
     //ar.add(text);
 
     // Respond with the result.
@@ -99,6 +118,7 @@ public class DataServlet extends HttpServlet {
     Entity taskEntity = new Entity("Task");
     taskEntity.setProperty("title", title);
     taskEntity.setProperty("timestamp", timestamp);
+    taskEntity.setProperty("email",email);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(taskEntity);

@@ -88,27 +88,55 @@ function createListElement(text) {
 
 
 /** Fetches tasks from the server and adds them to the DOM. */
-function getData() {
-  fetch('/data').then(response => response.json()).then((tasks) => {
-    const taskListElement = document.getElementById('msg');
-    tasks.forEach((task) => {
-      taskListElement.appendChild(createTaskElement(task));
-    })
+//window.customElements.define('comment-element', class extends HTMLElement {'p'});
+async function getComments(){
+  const response = await fetch('/data');
+  const comments = await response.json();
+  container = document.getElementById('comments-container'); 
+  comments.forEach((comment)=>{
+      container.appendChild(createListElement(comment));
   });
+  
 }
 
-/** Creates an element that represents a task, including its delete button. */
-function createTaskElement(task) {
-  const taskElement = document.createElement('li');
-  taskElement.className = 'task';
+function createListElement(text) {
+  const element = document.createElement('li');
+
+    element.className = 'text';
 
   const titleElement = document.createElement('span');
-  titleElement.innerText = task.title;
+  titleElement.innerText = text.title;
 
-  taskElement.appendChild(titleElement);
+  element.appendChild(titleElement);
 
-  return taskElement;
+  element.innerText =  text.title ;
+  console.log(text.title);
+  return element;
 }
+
+async function allowornot(){
+    await getComments();
+    const response = await fetch('/login');
+    const userResponse = await response.json();
+    const commentTextArea = document.getElementById('content1');
+    const logoutuser = document.getElementById('userlogout');
+    const loginUrl = document.getElementById('login-url');
+    const loginuser = document.getElementById('userlogin');
+    const logoutUrl = document.getElementById('logout-url');
+    console.log(userResponse);
+    if (userResponse.LoggedIn) {
+        console.log("Logged in");
+        loginuser.hidden = true;
+        logoutUrl.href = userResponse.userURL;       
+    } 
+    else{
+        console.log("Logged out");
+        commentTextArea.hidden = true;
+        logoutuser.hidden = true;
+        loginUrl.href = userResponse.userURL;
+     }
+}
+
 
 
 
