@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js"></script>
   </head>
-  <body onload="getData()">
+  <body onload="allowornot()">
         <header>
             <nav class="nav">
                 <ul class="nav_list">
@@ -135,7 +135,7 @@
         <!-- Comments -->
 
         <section class="comments">
-            <form action="/data" method="POST">
+            <!--form action="/data" method="POST">
             <h2 class="section_title">Comments are Welcome!</h2>
             <textarea name="text-input">comment</textarea>
             <br>
@@ -143,7 +143,27 @@
             <br>
             <br>
             </form>
-            <div id="msg"></div>
+            <div id="msg"></div-->
+
+        <h2 class="section_title">Comments are Welcome!</h2>
+        <div id="content1">      
+            <div id ="comments-container"></div>
+            <form action = "/data" method = "POST">          
+            
+            <textarea id = "cmnt" name="new-comment"  placeholder= "your-comment"></textarea>
+            
+            <button id = "comment-btn">Submit</button>
+            
+            </form>      
+        </div>
+
+        <div id = "userlogin">
+            for comment <a id = "login-url">login</a>
+        </div>
+        <div id = "userlogout">
+            <a id = "logout-url">logout</a>
+        </div>
+
         </section>
 
         <!-- Footer -->
